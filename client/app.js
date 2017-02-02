@@ -1,16 +1,16 @@
 import angular from 'angular';
 import 'angular-ui-router';
-import {MainCtrl} from './main/MainCtrl';
-import './styles/styles.scss';
+
+import LoginCtrl from './modules/common/controllers/login-ctrl.js';
 
 let huvas = angular.module('angularWebpack', ['ui.router'])
-.controller('MainCtrl', MainCtrl)
+.controller('LoginCtrl', LoginCtrl)
 .config([ '$urlRouterProvider', '$stateProvider',
     ( $urlRouterProvider, $stateProvider) => {
         $stateProvider
         .state('context', {
-            templateUrl: './main/base.html',
-            controller: 'MainCtrl',
+            templateUrl: './modules/common/views/login.html',
+            controller: 'LoginCtrl',
             url: '/',
          })
 

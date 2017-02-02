@@ -1,20 +1,32 @@
 <!DOCTYPE html>
 <html lang="en" ng-app="angularWebpack">
 <head>
-    <meta charset="UTF-8">
-    <title>Angular Webpack</title>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>huvas</title>
+    <link href="data:image/x-icon;base64,AAABAAEAEBAAAAEAIABoBAAAFgAAACgAAAAQAAAAIAAAAAEAIAAAAAAAAAQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAALRrDf+0awv/tWsK/7RrDf/69O2HAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAC1awn/tGoH/7RqCf+0awz/+vTthwAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAtGsM/7RrDf+0aw3/tGsM//r07YcAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA/Pr3wvz59sr8+fbK/Pn2yrRrDP+0awz/tWsK/7VrCf/37+b//Pn2yv359cr8+fbKAAAAAAAAAAAAAAAAAAAAAMSIPPe1awn/tGsM/7RrDf+0aw3/tGsN/7RrDf+/gCv/tGsL/7RrDP+0aw3//fr3KAAAAAAAAAAAAAAAAAAAAAC6dBn38ubWzbRrDf+0awr/tWsK/7RrDf/KllH/tGsN/+TJpoK0awz/5cupzbVrCf8AAAAA/v7+aAAAAAAAAAAAunQa97RqCP+1awn/4sah9LVrCv+0agj/tWsK/7VrCf+0agf/9OncnbRrDf+1awn/AAAAAAAAAAAAAAAAAAAAALl0HPe1awr/tGoK/7RrDf/16tz/tWsK/7RrDP+0awz/tWsK/7RrC/+1awn/tWsJ/wAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAtGsN/8qWUf+1awn/tGsL//r174cAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAALRrDf+0aw3/tGsM/7RqCP/69O2HAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAC0awz/tGsN/7RrDf+0awz/+vTthwAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAtGoI/7RrDf+0aw3/tWsK//r07YcAAAAAAAAAAAAAAAAAAAAA9vb2aAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA//8AAP//AAD8HwAA/B8AAPwfAADAAwAAwAcAAMADAADAAwAAwAMAAPwfAAD8HwAA/B8AAPwfAAD//wAA//8AAA==" rel="icon" type="image/x-icon" />
+    <!-- Tell the browser to be responsive to screen width -->
+    <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
     <!-- Bootstrap 3.3.6 -->
-    <link rel="stylesheet" href="./lib/AdminLTE/bootstrap/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="./lib/AdminLTE/bootstrap/css/bootstrap.min.css">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.5.0/css/font-awesome.min.css">
+    <!-- Ionicons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/ionicons/2.0.1/css/ionicons.min.css">
+    <!-- Theme style -->
+    <link rel="stylesheet" href="./lib/AdminLTE/dist/css/AdminLTE.min.css">
+    <!-- iCheck -->
+    <link rel="stylesheet" href="./lib/AdminLTE/plugins/iCheck/square/blue.css">
+    
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+    <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
+    <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
 </head>
-<body class="context">
-    <div class="row col-xs-12">
-        <h1>Namo Venkateswaraya namaha !!!</h1>
-    </div>
-    <div class="row">
-        <div class="col-xs-6">
-            <div ui-view></div>
-        </div>
-    </div>
+<body>
+    <div ui-view></div>
     <script src="bundle.js"></script>
 </body>
 </html>
