@@ -5,7 +5,8 @@
   "main": "app.js",
   "scripts": {
     "postinstall" : "bower install",
-    "start": "webpack && node server.js"
+    "dev":"webpack && node server.js",
+    "start": "node server.js"
   },
   "author": "",
   "license": "ISC",
