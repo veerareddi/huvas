@@ -3,10 +3,18 @@
 <head>
     <meta charset="UTF-8">
     <title>Angular Webpack</title>
+    <!-- Bootstrap 3.3.6 -->
+    <link rel="stylesheet" href="./lib/AdminLTE/bootstrap/css/bootstrap.min.css" />
 </head>
-<body ng-controller="MainCtrl as app">
-    <h1>Namo Venkateswaraya namaha !!!</h1>
-    <div ui-view></div>
+<body class="context">
+    <div class="row col-xs-12">
+        <h1>Namo Venkateswaraya namaha !!!</h1>
+    </div>
+    <div class="row">
+        <div class="col-xs-6">
+            <div ui-view></div>
+        </div>
+    </div>
     <script src="bundle.js"></script>
 </body>
 </html>

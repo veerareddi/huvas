@@ -1,0 +1,24 @@
+{
+  "name": "huvas",
+  "description": "Hospital Utility Value Added Service",
+  "main": "app.js",
+  "authors": [
+    "veera <veera.obulareddy@ge.com>"
+  ],
+  "license": "ISC",
+  "keywords": [
+    "huvas"
+  ],
+  "homepage": "https://github.com/obulareddyveerareddy/huvas",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "client/lib/",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "AdminLTE": "admin-lte#^2.3.11"
+  }
+}
