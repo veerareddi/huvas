@@ -4,6 +4,7 @@
   "description": "",
   "main": "app.js",
   "scripts": {
+    "postinstall" : "bower install",
     "start": "webpack && node server.js"
   },
   "author": "",
