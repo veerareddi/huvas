@@ -65,7 +65,7 @@
 /******/ 	}
 /******/ 	
 /******/ 	var hotApplyOnUpdate = true;
-/******/ 	var hotCurrentHash = "86ce0a386489935b828c"; // eslint-disable-line no-unused-vars
+/******/ 	var hotCurrentHash = "201604d4ff3b0518210f"; // eslint-disable-line no-unused-vars
 /******/ 	var hotCurrentModuleData = {};
 /******/ 	var hotCurrentParents = []; // eslint-disable-line no-unused-vars
 /******/ 	
@@ -599,9 +599,13 @@
 
 	var _loginCtrl2 = _interopRequireDefault(_loginCtrl);
 
+	var _loginService = __webpack_require__(5);
+
+	var _loginService2 = _interopRequireDefault(_loginService);
+
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-	var huvas = _angular2.default.module('angularWebpack', ['ui.router']).controller('LoginCtrl', _loginCtrl2.default).config(['$urlRouterProvider', '$stateProvider', function ($urlRouterProvider, $stateProvider) {
+	var huvas = _angular2.default.module('angularWebpack', ['ui.router']).controller('LoginCtrl', _loginCtrl2.default).service('LoginService', _loginService2.default).config(['$urlRouterProvider', '$stateProvider', function ($urlRouterProvider, $stateProvider) {
 	    $stateProvider.state('context', {
 	        templateUrl: './modules/common/views/login.html',
 	        controller: 'LoginCtrl',
@@ -38319,16 +38323,30 @@
 	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
 	var controller = function () {
-	  function controller() {
+	  function controller($scope, LoginService) {
 	    _classCallCheck(this, controller);
 
+	    this.scope = $scope;
+	    this.scope.user = { email: 'veerareddy.obula@gmail.com', password: 'veera@168', rememberMe: true };
+
+	    this.loginService = LoginService;
+	    console.log($scope);
 	    this.init();
 	  }
 
 	  _createClass(controller, [{
 	    key: 'init',
 	    value: function init() {
+	      var _this = this;
+
 	      console.log('login-controller initialized');
+	      this.scope.onLoginClick = function () {
+	        console.log('::::::::: On Login Click Handler :::::::::::');
+	        console.log(_this.scope.user);
+	        _this.loginService.validateLoginDetails(_this.scope.user).then(function (response) {
+	          console.log('::::::::::::::::::::> Promise return ::::::::::::::::::::');
+	        });
+	      };
 	    }
 	  }]);
 
@@ -38338,9 +38356,59 @@
 	// Strict DI for minification (order is important)
 
 
-	controller.$inject = [];
+	controller.$inject = ['$scope', 'LoginService'];
 
 	exports.default = controller;
+
+/***/ },
+/* 5 */
+/***/ function(module, exports) {
+
+	'use strict';
+
+	Object.defineProperty(exports, "__esModule", {
+		value: true
+	});
+
+	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+	var LoginService = function () {
+		function LoginService($http) {
+			_classCallCheck(this, LoginService);
+
+			this.$http = $http;
+		}
+
+		_createClass(LoginService, [{
+			key: 'validateLoginDetails',
+			value: function validateLoginDetails(user) {
+				console.log(':::::::::::::::::: validateLoginDetails ::::::::::::::::::');
+				return this.$http.post('/api/user/validate', { user: user });
+			}
+		}, {
+			key: 'callService',
+			value: function callService(url) {
+				return this.$http.get(url).success(function (data) {
+					return data;
+				}).error(function (data) {
+					return data;
+				});
+			}
+		}], [{
+			key: 'serviceFactory',
+			value: function serviceFactory($http) {
+				return new LoginService($http);
+			}
+		}]);
+
+		return LoginService;
+	}();
+
+	LoginService.serviceFactory.$inject = ['$http'];
+
+	exports.default = LoginService.serviceFactory;
 
 /***/ }
 /******/ ]);

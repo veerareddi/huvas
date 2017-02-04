@@ -1,16 +1,22 @@
-import http from 'http';
-import path from 'path';
-import async from 'async';
+import http     from 'http';
+import path     from 'path';
+import async    from 'async';
 import socketio from 'socket.io';
-import express from 'express';
+import express  from 'express';
+import bodyParser   from 'body-parser';
 
-const router  = express();
-const server  = http.createServer(router);
-const io      = socketio.listen(server);
+const router    = express();
+const server    = http.createServer(router);
+const io        = socketio.listen(server);
+const messages  = [];
+const sockets   = [];
 
 router.use(express.static(path.resolve(__dirname, 'client')));
-const messages = [];
-const sockets = [];
+router.use( bodyParser.json() );
+router.use(bodyParser.urlencoded({
+  extended: true
+})); 
+
 
 io.on('connection', function (socket) {
     messages.forEach(function (data) {
@@ -65,6 +71,8 @@ function broadcast(event, data) {
     socket.emit(event, data);
   });
 }
+
+router.use(require('./service/AuthService.js'));
 
 server.listen(process.env.PORT || 3000, process.env.IP || "0.0.0.0", function(){
   var addr = server.address();

@@ -15,8 +15,10 @@
     "angular-ui-router": "^0.4.2",
     "async": "~0.2.8",
     "babel-cli": "^6.22.2",
+    "body-parser": "^1.16.0",
     "bower": "^1.8.0",
     "express": "~3.2.4",
+    "faker": "^3.1.0",
     "socket.io": "~0.9.14"
   },
   "devDependencies": {
