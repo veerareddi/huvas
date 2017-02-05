@@ -65,7 +65,7 @@
 /******/ 	}
 /******/ 	
 /******/ 	var hotApplyOnUpdate = true;
-/******/ 	var hotCurrentHash = "201604d4ff3b0518210f"; // eslint-disable-line no-unused-vars
+/******/ 	var hotCurrentHash = "73c0e6c0f9052a9f906c"; // eslint-disable-line no-unused-vars
 /******/ 	var hotCurrentModuleData = {};
 /******/ 	var hotCurrentParents = []; // eslint-disable-line no-unused-vars
 /******/ 	
@@ -595,25 +595,31 @@
 
 	__webpack_require__(3);
 
-	var _loginCtrl = __webpack_require__(4);
+	var _constants = __webpack_require__(4);
 
-	var _loginCtrl2 = _interopRequireDefault(_loginCtrl);
+	var _constants2 = _interopRequireDefault(_constants);
 
-	var _loginService = __webpack_require__(5);
+	var _interceptors = __webpack_require__(5);
 
-	var _loginService2 = _interopRequireDefault(_loginService);
+	var _interceptors2 = _interopRequireDefault(_interceptors);
+
+	var _routes = __webpack_require__(6);
+
+	var _routes2 = _interopRequireDefault(_routes);
+
+	var _module = __webpack_require__(7);
+
+	var _module2 = _interopRequireDefault(_module);
+
+	var _module3 = __webpack_require__(9);
+
+	var _module4 = _interopRequireDefault(_module3);
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-	var huvas = _angular2.default.module('angularWebpack', ['ui.router']).controller('LoginCtrl', _loginCtrl2.default).service('LoginService', _loginService2.default).config(['$urlRouterProvider', '$stateProvider', function ($urlRouterProvider, $stateProvider) {
-	    $stateProvider.state('context', {
-	        templateUrl: './modules/common/views/login.html',
-	        controller: 'LoginCtrl',
-	        url: '/'
-	    });
+	var huvas = _angular2.default.module('angularWebpack', ['ui.router', _interceptors2.default.name, _constants2.default, _module4.default, _module2.default]);
 
-	    $urlRouterProvider.otherwise("/");
-	}]);
+	huvas.config(_routes2.default);
 
 	huvas.$inject = ['$urlRouterProvider', '$stateProvider'];
 	exports.default = huvas;
@@ -38304,6 +38310,155 @@
 
 /***/ },
 /* 4 */
+/***/ function(module, exports) {
+
+	'use strict';
+
+	Object.defineProperty(exports, "__esModule", {
+	    value: true
+	});
+	var closureCodes = ['No Action', 'Sensor Repair', 'Operational Change', 'Scheduled Maintenance', 'Unplanned Maintenance', 'Forced Outage'];
+
+	var caseGroups = {
+	    unclaimed: 'unclaimed',
+	    my: 'my',
+	    open: 'open',
+	    awaiting: 'awaiting',
+	    closed: 'closed'
+	};
+
+	exports.default = angular.module('app.constants', []).constant('CLOSURE_CODES', closureCodes).constant('CASE_GROUPS', caseGroups).constant('ENABLE_CASES_GATEWAY', true).name;
+
+/***/ },
+/* 5 */
+/***/ function(module, exports) {
+
+	'use strict';
+
+	Object.defineProperty(exports, "__esModule", {
+	    value: true
+	});
+	exports.default = angular.module('app.interceptors', []).config(['$httpProvider', '$locationProvider', function ($httpProvider) {
+	    $httpProvider.defaults.headers.common['X-Requested-With'] = 'XMLHttpRequest';
+
+	    $httpProvider.interceptors.push(['$q', function ($q) {
+	        return {
+	            'request': function request(config) {
+	                // Todo: place the tenantId into the header for the blob calls
+	                if (config.method === 'PATCH') {
+	                    config.method = 'POST';
+	                    config.headers['X-HTTP-Method-Override'] = 'PATCH';
+	                }
+	                //config.headers['cache-control'] = 'public, max-age=31557600';
+	                return config;
+	            },
+	            'requestError': function requestError(rejection) {
+	                return $q.reject(rejection);
+	            },
+	            'response': function response(_response) {
+	                return _response;
+	            },
+	            'responseError': function responseError(rejection) {
+	                return $q.reject(rejection);
+	            }
+	        };
+	    }]);
+	}]);
+
+/***/ },
+/* 6 */
+/***/ function(module, exports) {
+
+	'use strict';
+
+	Object.defineProperty(exports, "__esModule", {
+	    value: true
+	});
+
+	function config($stateProvider, $windowProvider, $logProvider, $urlRouterProvider) {
+	    var $window = $windowProvider.$get();
+	    $logProvider.debugEnabled(false);
+
+	    $stateProvider.state('context', {
+	        templateUrl: './modules/common/views/login.html',
+	        controller: 'LoginCtrl',
+	        url: '/'
+	    }).state('dashboard', {
+	        templateUrl: './modules/dashboard/views/dashboard.html',
+	        controller: 'dashboardController',
+	        url: '/dashboard'
+	    });
+
+	    $urlRouterProvider.otherwise("/");
+	}
+
+	config.$inject = ['$stateProvider', '$windowProvider', '$logProvider', '$urlRouterProvider'];
+
+	exports.default = config;
+
+/***/ },
+/* 7 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+
+	Object.defineProperty(exports, "__esModule", {
+	    value: true
+	});
+
+	var _dashboardCtrl = __webpack_require__(8);
+
+	var _dashboardCtrl2 = _interopRequireDefault(_dashboardCtrl);
+
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+	exports.default = angular.module('app.dashboard', []).controller('dashboardController', _dashboardCtrl2.default).name;
+
+/***/ },
+/* 8 */
+/***/ function(module, exports) {
+
+	'use strict';
+
+	Object.defineProperty(exports, "__esModule", {
+	    value: true
+	});
+
+	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+	var controller = function controller($scope) {
+	    _classCallCheck(this, controller);
+
+	    console.log(':::::::::::: This is dashboard controller :::::::::::::::');
+	};
+
+	controller.$inject = ['$scope'];
+	exports.default = controller;
+
+/***/ },
+/* 9 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+
+	Object.defineProperty(exports, "__esModule", {
+	    value: true
+	});
+
+	var _loginCtrl = __webpack_require__(10);
+
+	var _loginCtrl2 = _interopRequireDefault(_loginCtrl);
+
+	var _loginService = __webpack_require__(11);
+
+	var _loginService2 = _interopRequireDefault(_loginService);
+
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+	exports.default = angular.module('app.dashboard', []).controller('LoginCtrl', _loginCtrl2.default).service('LoginService', _loginService2.default).name;
+
+/***/ },
+/* 10 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -38318,33 +38473,38 @@
 
 	var _angular2 = _interopRequireDefault(_angular);
 
+	__webpack_require__(3);
+
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
 	var controller = function () {
-	  function controller($scope, LoginService) {
+	  function controller($scope, $state, LoginService) {
 	    _classCallCheck(this, controller);
 
 	    this.scope = $scope;
 	    this.scope.user = { email: 'veerareddy.obula@gmail.com', password: 'veera@168', rememberMe: true };
-
 	    this.loginService = LoginService;
 	    console.log($scope);
-	    this.init();
+	    this.init($state);
 	  }
 
 	  _createClass(controller, [{
 	    key: 'init',
-	    value: function init() {
+	    value: function init($state) {
 	      var _this = this;
 
+	      this.state = $state;
 	      console.log('login-controller initialized');
+	      console.log($state);
 	      this.scope.onLoginClick = function () {
 	        console.log('::::::::: On Login Click Handler :::::::::::');
 	        console.log(_this.scope.user);
+	        var self = _this;
 	        _this.loginService.validateLoginDetails(_this.scope.user).then(function (response) {
 	          console.log('::::::::::::::::::::> Promise return ::::::::::::::::::::');
+	          self.state.go('dashboard');
 	        });
 	      };
 	    }
@@ -38356,12 +38516,12 @@
 	// Strict DI for minification (order is important)
 
 
-	controller.$inject = ['$scope', 'LoginService'];
+	controller.$inject = ['$scope', '$state', 'LoginService'];
 
 	exports.default = controller;
 
 /***/ },
-/* 5 */
+/* 11 */
 /***/ function(module, exports) {
 
 	'use strict';

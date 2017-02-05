@@ -1,23 +1,25 @@
 import angular from 'angular';
 import 'angular-ui-router';
 
-import LoginCtrl    from './modules/common/controllers/login-ctrl.js';
-import LoginService from './modules/common/services/login-service.js'
+import constantsModule      from './config/constants';
+import interceptorsModule   from './config/interceptors';
+import routes               from './config/routes';
 
-let huvas = angular.module('angularWebpack', ['ui.router'])
-.controller('LoginCtrl', LoginCtrl)
-.service('LoginService', LoginService)
-.config([ '$urlRouterProvider', '$stateProvider',
-    ( $urlRouterProvider, $stateProvider) => {
-        $stateProvider
-        .state('context', {
-            templateUrl: './modules/common/views/login.html',
-            controller: 'LoginCtrl',
-            url: '/',
-         })
+import dashboard            from './modules/dashboard/module';
+import common               from './modules/common/module';
 
-          $urlRouterProvider.otherwise("/");
-    }]);
+
+
+let huvas = angular.module('angularWebpack', [
+    'ui.router'
+    ,interceptorsModule.name
+    ,constantsModule
+    ,common
+    ,dashboard
+]);
+
+
+huvas.config(routes);
 
 huvas.$inject = ['$urlRouterProvider', '$stateProvider'];
 export default huvas;
