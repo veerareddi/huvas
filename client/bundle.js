@@ -65,7 +65,7 @@
 /******/ 	}
 /******/ 	
 /******/ 	var hotApplyOnUpdate = true;
-/******/ 	var hotCurrentHash = "5984f9b487e40c671d6d"; // eslint-disable-line no-unused-vars
+/******/ 	var hotCurrentHash = "6cbf1273e8bb5d0f4b9a"; // eslint-disable-line no-unused-vars
 /******/ 	var hotCurrentModuleData = {};
 /******/ 	var hotCurrentParents = []; // eslint-disable-line no-unused-vars
 /******/ 	
@@ -38665,7 +38665,6 @@
 	            // store the Event Object in the DOM element so we can get to it later
 	            $(this).data('eventObject', eventObject);
 
-	            // make the event draggable using jQuery UI
 	            $(this).draggable({
 	              zIndex: 1070,
 	              revert: true, // will cause the event to go back to its
