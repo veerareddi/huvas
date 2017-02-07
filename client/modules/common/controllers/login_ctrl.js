@@ -1,14 +1,10 @@
-'use strict';
-
-import angular from 'angular';
-import 'angular-ui-router';
 
 class controller {
   
-  constructor($scope, $state, LoginService) {
+  constructor($scope, $state, loginService) {
     this.scope = $scope;
     this.scope.user = {email:'veerareddy.obula@gmail.com',password:'veera@168', rememberMe:true};
-    this.loginService = LoginService;
+    this.loginService = loginService;
     console.log($scope);
     this.init($state);
   }
@@ -27,12 +23,8 @@ class controller {
       })
     };
   }
-  
-  
-  
 }
 
-// Strict DI for minification (order is important)
-controller.$inject = ['$scope', '$state', 'LoginService'];
+controller.$inject = ['$scope', '$state', 'loginService'];
 
 export default controller;

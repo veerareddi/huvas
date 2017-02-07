@@ -6,7 +6,7 @@ function config($stateProvider, $windowProvider, $logProvider, $urlRouterProvide
     $stateProvider
     .state('context', {
         templateUrl: './modules/common/views/login.html',
-        controller: 'LoginCtrl',
+        controller: 'loginCtrl',
         url: '/'
     })
     .state('dashboard', {
@@ -14,6 +14,13 @@ function config($stateProvider, $windowProvider, $logProvider, $urlRouterProvide
         controller:'dashboardController',
         url: '/dashboard'
     })
+    .state('dashboard.calendar', {
+        templateUrl: './modules/calendar/views/calendar.html',
+        controller:'calendarController',
+        url: '/dashboard/calendar'
+    })
+    
+    
     
     $urlRouterProvider.otherwise("/");
 

@@ -1,8 +1,8 @@
 
-import LoginCtrl            from './controllers/login-ctrl.js';
-import LoginService         from './services/login-service.js'
+import LoginCtrl            from './controllers/login_ctrl';
+import LoginService         from './services/login_service';
 
-export default angular.module('app.dashboard', [])
-    .controller('LoginCtrl', LoginCtrl)
-    .service('LoginService', LoginService)
+export default angular.module('app.common', [])
+    .controller('loginCtrl', LoginCtrl)
+    .service('loginService', LoginService)
     .name;
