@@ -65,7 +65,7 @@
 /******/ 	}
 /******/ 	
 /******/ 	var hotApplyOnUpdate = true;
-/******/ 	var hotCurrentHash = "452ae7d86ef28b68b2c5"; // eslint-disable-line no-unused-vars
+/******/ 	var hotCurrentHash = "5984f9b487e40c671d6d"; // eslint-disable-line no-unused-vars
 /******/ 	var hotCurrentModuleData = {};
 /******/ 	var hotCurrentParents = []; // eslint-disable-line no-unused-vars
 /******/ 	
@@ -38384,7 +38384,7 @@
 	    $logProvider.debugEnabled(false);
 
 	    $stateProvider.state('context', {
-	        templateUrl: './modules/common/views/login.html',
+	        templateUrl: './modules/auth/views/login.html',
 	        controller: 'loginCtrl',
 	        url: '/'
 	    }).state('dashboard', {
@@ -38424,7 +38424,7 @@
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-	exports.default = angular.module('app.common', []).controller('loginCtrl', _login_ctrl2.default).service('loginService', _login_service2.default).name;
+	exports.default = angular.module('app.auth', []).controller('loginCtrl', _login_ctrl2.default).service('loginService', _login_service2.default).name;
 
 /***/ },
 /* 8 */

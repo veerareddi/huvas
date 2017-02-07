@@ -5,7 +5,7 @@ import constantsModule      from './config/constants';
 import interceptorsModule   from './config/interceptors';
 import routes               from './config/routes';
 
-import common               from './modules/common/module';
+import auth                 from './modules/auth/module';
 import dashboard            from './modules/dashboard/module';
 import calendar             from './modules/calendar/module';
 
@@ -13,7 +13,7 @@ let huvas = angular.module('angularWebpack', [
     'ui.router'
     ,interceptorsModule.name
     ,constantsModule
-    ,common
+    ,auth
     ,dashboard
     ,calendar
 ]);

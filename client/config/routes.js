@@ -5,7 +5,7 @@ function config($stateProvider, $windowProvider, $logProvider, $urlRouterProvide
     
     $stateProvider
     .state('context', {
-        templateUrl: './modules/common/views/login.html',
+        templateUrl: './modules/auth/views/login.html',
         controller: 'loginCtrl',
         url: '/'
     })
