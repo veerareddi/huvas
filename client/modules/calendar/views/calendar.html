@@ -14,7 +14,7 @@
     <div class="col-md-3">
       <div class="box box-solid">
         <div class="box-header with-border">
-          <h4 class="box-title">Draggable Events</h4>
+          <h4 class="box-title">Event Templates (Draggable)</h4>
         </div>
         <div class="box-body">
           <!-- the events -->
@@ -22,7 +22,7 @@
             <div class="external-event bg-green">Lunch</div>
             <div class="external-event bg-yellow">Go home</div>
             <div class="external-event bg-aqua">Do homework</div>
-            <div class="external-event bg-light-blue">Work on UI design</div>
+            <div class="external-event bg-light-blue">Appointment</div>
             <div class="external-event bg-red">Sleep tight</div>
             <div class="checkbox">
               <label for="drop-remove">
@@ -37,7 +37,7 @@
       <!-- /. box -->
       <div class="box box-solid">
         <div class="box-header with-border">
-          <h3 class="box-title">Create Event</h3>
+          <h3 class="box-title">Create Event Template</h3>
         </div>
         <div class="box-body">
           <div class="btn-group" style="width: 100%; margin-bottom: 10px;">
@@ -61,11 +61,9 @@
           <!-- /btn-group -->
           <div class="input-group">
             <input id="new-event" type="text" class="form-control" placeholder="Event Title">
-
             <div class="input-group-btn">
               <button id="add-new-event" type="button" class="btn btn-primary btn-flat">Add</button>
             </div>
-            <!-- /btn-group -->
           </div>
           <!-- /input-group -->
         </div>
@@ -76,7 +74,7 @@
       <div class="box box-primary">
         <div class="box-body no-padding">
           <!-- THE CALENDAR -->
-          <full-calendar-directive></full-calendar-directive>
+          <full-calendar-directive  src-events="doctorSrcEvents" set-event="setCalendarEvent"></full-calendar-directive>
         </div>
         <!-- /.box-body -->
       </div>
@@ -85,4 +83,75 @@
     <!-- /.col -->
   </div>
   <!-- /.row -->
+  <div class="row">
+    <div id="myModal" class="modal fade" role="dialog">
+      <div class="modal-dialog">
+        <!-- Modal content-->
+        <div class="modal-content">
+          <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal">&times;</button>
+            <h4 class="modal-title">Add/Edit Event</h4>
+          </div>
+          <div class="modal-body">
+            <form>
+              <div class="row">
+                <div class="col-md-12">
+                  <div class="form-group">
+                    <label for="eventTitle">Title</label>
+                    <input type="text" class="form-control" id="eventTitle" placeholder="Enter title" ng-model="modelDataSrc.title">
+                  </div>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-xs-12 col-sm-12 col-md-6">
+                  <div class="form-group">
+                    <label for="patientName">Patient Name</label>
+                    <input type="text" class="form-control" id="patientName" placeholder="Enter Patient Name" ng-model="modelDataSrc.patientName">
+                  </div>
+                  <div class="form-group">
+                    <label>Note</label>
+                    <textarea class="form-control" rows="3" placeholder="Enter ..." ng-model="modelDataSrc.note"></textarea>
+                  </div>
+                </div>
+                <div class="col-xs-12 col-sm-12 col-md-6">
+                  <div class="form-group">
+                    <label>Doctor</label>
+                    <select class="form-control select2" style="width: 100%;">
+                      <option selected="selected">Dr.Manoranjan Reddy</option>
+                      <option>Dr.Harish</option>
+                    </select>
+                  </div>
+                  <div class="form-group">
+                    <label for="refFrom">Ref. from</label>
+                    <input type="text" class="form-control" id="refFrom" placeholder="Enter Ref Name" ng-model="modelDataSrc.refName">
+                  </div>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-md-12">
+                  
+                  <div class="form-group">
+                    <label>Time picker:</label>
+                    <div class="input-group bootstrap-timepicker timepicker" set-date-time-picker-dir set-id="datetimepicker3">
+                      <input id="datetimepicker3" type="text" class="form-control input-small">
+                      <span class="input-group-addon">
+                        <i class="glyphicon glyphicon-time"></i>
+                      </span>
+                    </div>
+                  </div>
+                  
+                </div>
+              </div>
+            </form>
+          </div>
+          <div class="modal-footer">
+            <div class="btn-group">
+              <button type="button" class="btn btn-primary" data-dismiss="modal">Save</button>
+              <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
 </section>

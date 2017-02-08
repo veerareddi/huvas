@@ -8,6 +8,7 @@ import routes               from './config/routes';
 import auth                 from './modules/auth/module';
 import dashboard            from './modules/dashboard/module';
 import calendar             from './modules/calendar/module';
+import event                from './modules/event/module';
 
 let huvas = angular.module('angularWebpack', [
     'ui.router'
@@ -16,10 +17,10 @@ let huvas = angular.module('angularWebpack', [
     ,auth
     ,dashboard
     ,calendar
+    ,event
 ]);
 
 
 huvas.config(routes);
-
 huvas.$inject = ['$urlRouterProvider', '$stateProvider'];
 export default huvas;

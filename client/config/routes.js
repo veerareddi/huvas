@@ -19,6 +19,11 @@ function config($stateProvider, $windowProvider, $logProvider, $urlRouterProvide
         controller:'calendarController',
         url: '/dashboard/calendar'
     })
+    .state('dashboard.event', {
+        templateUrl: './modules/event/views/event.html',
+        controller:'eventController',
+        url: '/dashboard/calendar/event'
+    })
     
     
     
