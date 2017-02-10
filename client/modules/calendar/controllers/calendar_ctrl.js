@@ -65,7 +65,7 @@ class controller {
     console.log('calendar-controller initialized');
     
     this.scope.setCalendarEvent = (event) => {
-      console.log(':::::::::::::: setCalendarEvent ::::::::::::::');
+      console.log(':::::::::::::: setCalendarEvent - veera in master ::::::::::::::');
       this.scope.modelDataSrc = event;
       this.scope.$apply();
     }

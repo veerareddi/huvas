@@ -4,9 +4,13 @@
   "description": "",
   "main": "app.js",
   "scripts": {
+    "dev": "npm-run-all --parallel watch:server watch:build",
     "postinstall": "bower install",
-    "dev": "webpack && babel-node server.js",
-    "start": "babel-node server.js"
+    "dev1": "webpack && babel-node server.js",
+    "dev2": "webpack && nodemon server.js --exec babel-node --presets es2015",
+    "start": "babel-node server.js",
+    "watch:build": "webpack --watch",
+    "watch:server": "nodemon server.js --exec babel-node --presets es2015"
   },
   "author": "",
   "license": "ISC",
@@ -28,6 +32,8 @@
     "babel-loader": "^6.2.4",
     "css-loader": "^0.23.1",
     "node-sass": "^3.5.3",
+    "nodemon": "^1.11.0",
+    "npm-run-all": "^4.0.1",
     "sass-loader": "^3.2.0",
     "style-loader": "^0.13.1",
     "webpack": "^1.13.0",
