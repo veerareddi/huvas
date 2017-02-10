@@ -9,7 +9,6 @@ function fullCalendarDirective($state) {
         },
         link: function (scope, element, attrs, ctrl) {
             console.log('::::::::::::::> fullCalendarDirective <::::::::::::::');
-            console.log(JSON.stringify(scope.srcEvents));
             
             var date = new Date();
             var d = date.getDate(),
@@ -33,20 +32,10 @@ function fullCalendarDirective($state) {
               editable: true,
               droppable: true,
               eventClick: function(calEvent, jsEvent, view) {
-              
-                console.log('Event: ' + calEvent.title);
-                console.log('Coordinates: ' + jsEvent.pageX + ',' + jsEvent.pageY);
-                console.log('View: ' + view.name);
-                console.log(calEvent);
-                // change the border color just for fun
                 scope.setEvent()(calEvent);
                 $state.go('dashboard.event');
               },
               drop: function (date, allDay) { 
-                console.log('::::::::::::> Full Calendar Drop Function <::::::::::::');
-                console.log('0)Total Number of Src Events :::: '+scope.srcEvents.length);
-                
-                
                 var selectedDate = new Date(date._d);
                 var originalEventObject = $(this).data('eventObject');
                 var copiedEventObject = $.extend({}, originalEventObject);
@@ -62,7 +51,6 @@ function fullCalendarDirective($state) {
                 
                 scope.srcEvents.push(copiedEventObject);
                 scope.setEvent()(copiedEventObject);
-                console.log('1)Total Number of Src Events :::: '+scope.srcEvents.length);
                 $state.go('dashboard.event');
                 
               }

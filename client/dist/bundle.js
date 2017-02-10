@@ -65,7 +65,7 @@
 /******/ 	}
 /******/ 	
 /******/ 	var hotApplyOnUpdate = true;
-/******/ 	var hotCurrentHash = "1645c8dcb9c8d7bfd002"; // eslint-disable-line no-unused-vars
+/******/ 	var hotCurrentHash = "c17b1fd42ac5326d85c0"; // eslint-disable-line no-unused-vars
 /******/ 	var hotCurrentModuleData = {};
 /******/ 	var hotCurrentParents = []; // eslint-disable-line no-unused-vars
 /******/ 	
@@ -38606,7 +38606,6 @@
 	    this.scope = $scope;
 	    this.scope.user = { email: 'veerareddy.obula@gmail.com', password: 'veera@168', rememberMe: true };
 	    this.loginService = loginService;
-	    console.log($scope);
 	    this.init($state);
 	  }
 
@@ -38616,14 +38615,9 @@
 	      var _this = this;
 
 	      this.state = $state;
-	      console.log('login-controller initialized');
-	      console.log($state);
 	      this.scope.onLoginClick = function () {
-	        console.log('::::::::: On Login Click Handler :::::::::::');
-	        console.log(_this.scope.user);
 	        var self = _this;
 	        _this.loginService.validateLoginDetails(_this.scope.user).then(function (response) {
-	          console.log('::::::::::::::::::::> Promise return ::::::::::::::::::::');
 	          self.state.go('dashboard');
 	        });
 	      };
@@ -38775,7 +38769,6 @@
 	    _classCallCheck(this, controller);
 
 	    this.scope = $scope;
-	    console.log($scope);
 	    this.init($state);
 	    this.scope.modelDataSrc = {};
 	  }
@@ -38835,7 +38828,7 @@
 	      console.log('calendar-controller initialized');
 
 	      this.scope.setCalendarEvent = function (event) {
-	        console.log(':::::::::::::: setCalendarEvent - veera in master ::::::::::::::');
+	        console.log('::::::::::::::> Super dude :( Veera hello!! :) Welcome setCalendarEvent <::::::::::::::');
 	        _this.scope.modelDataSrc = event;
 	        _this.scope.$apply();
 	      };
@@ -38872,7 +38865,6 @@
 	    },
 	    link: function link(scope, element, attrs, ctrl) {
 	      console.log('::::::::::::::> fullCalendarDirective <::::::::::::::');
-	      console.log(JSON.stringify(scope.srcEvents));
 
 	      var date = new Date();
 	      var d = date.getDate(),
@@ -38896,19 +38888,10 @@
 	        editable: true,
 	        droppable: true,
 	        eventClick: function eventClick(calEvent, jsEvent, view) {
-
-	          console.log('Event: ' + calEvent.title);
-	          console.log('Coordinates: ' + jsEvent.pageX + ',' + jsEvent.pageY);
-	          console.log('View: ' + view.name);
-	          console.log(calEvent);
-	          // change the border color just for fun
 	          scope.setEvent()(calEvent);
 	          $state.go('dashboard.event');
 	        },
 	        drop: function drop(date, allDay) {
-	          console.log('::::::::::::> Full Calendar Drop Function <::::::::::::');
-	          console.log('0)Total Number of Src Events :::: ' + scope.srcEvents.length);
-
 	          var selectedDate = new Date(date._d);
 	          var originalEventObject = $(this).data('eventObject');
 	          var copiedEventObject = $.extend({}, originalEventObject);
@@ -38924,7 +38907,6 @@
 
 	          scope.srcEvents.push(copiedEventObject);
 	          scope.setEvent()(copiedEventObject);
-	          console.log('1)Total Number of Src Events :::: ' + scope.srcEvents.length);
 	          $state.go('dashboard.event');
 	        }
 	      });

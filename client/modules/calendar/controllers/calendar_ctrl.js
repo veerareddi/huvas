@@ -3,7 +3,6 @@ class controller {
   
   constructor($scope, $state) {
     this.scope = $scope;
-    console.log($scope);
     this.init($state);
     this.scope.modelDataSrc = {};
   }
@@ -65,7 +64,7 @@ class controller {
     console.log('calendar-controller initialized');
     
     this.scope.setCalendarEvent = (event) => {
-      console.log(':::::::::::::: setCalendarEvent - veera in master ::::::::::::::');
+      console.log('::::::::::::::> Super dude :( Veera hello!! :) Welcome setCalendarEvent <::::::::::::::');
       this.scope.modelDataSrc = event;
       this.scope.$apply();
     }
