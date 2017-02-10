@@ -65,7 +65,7 @@
 /******/ 	}
 /******/ 	
 /******/ 	var hotApplyOnUpdate = true;
-/******/ 	var hotCurrentHash = "c2b2667910ee0d5b2093"; // eslint-disable-line no-unused-vars
+/******/ 	var hotCurrentHash = "aac71d3594689b44a236"; // eslint-disable-line no-unused-vars
 /******/ 	var hotCurrentModuleData = {};
 /******/ 	var hotCurrentParents = []; // eslint-disable-line no-unused-vars
 /******/ 	
@@ -38843,7 +38843,7 @@
 	            scope.setId = '#' + scope.setId;
 	            console.log(scope.setId);
 	            $(function () {
-	                $('#datetimepicker3').timepicker();
+	                $(scope.setId).timepicker();
 	            });
 	        }
 	    };

@@ -8,7 +8,7 @@ function setDateTimePickerDir() {
             scope.setId = '#'+scope.setId;
             console.log(scope.setId);
             $(function () {
-                $('#datetimepicker3').timepicker();
+                $(scope.setId).timepicker();
             });
         }
     }
