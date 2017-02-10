@@ -1,9 +1,10 @@
 var webpack = require('webpack');
+var CleanWebpackPlugin = require('clean-webpack-plugin');
 
 module.exports = {
 	entry: './client/app.js',
 	output: {
-		path: './client',
+		path: './client/dist',
 		filename: 'bundle.js'
 	},
 	module: {
@@ -20,6 +21,12 @@ module.exports = {
        	]
  },
 	plugins: [
-		new webpack.HotModuleReplacementPlugin()
+		new webpack.HotModuleReplacementPlugin(),
+		new CleanWebpackPlugin(['dist'], {
+			root: '/home/ubuntu/workspace/client/',
+			verbose: true, 
+			dry: false,
+			exclude: ['shared.js']
+		})
    ]
 };
