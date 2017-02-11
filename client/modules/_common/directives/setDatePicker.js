@@ -7,7 +7,7 @@ function setDatePickerDir() {
             console.log(':::::::::::::::: setDatePicker ::::::::::::::::');
             scope.setId = '#'+scope.setId;
             console.log(scope.setId);
-            $('#datepicker').datepicker({
+            $(scope.setId).datepicker({
                 autoclose: true
             });
         }

@@ -17,12 +17,22 @@ function config($stateProvider, $windowProvider, $logProvider, $urlRouterProvide
     .state('dashboard.calendar', {
         templateUrl: './modules/calendar/views/calendar.html',
         controller:'calendarController',
-        url: '/dashboard/calendar'
+        url: '/calendar'
     })
     .state('dashboard.event', {
         templateUrl: './modules/event/views/event.html',
         controller:'eventController',
-        url: '/dashboard/calendar/event'
+        url: '/calendar/event'
+    })
+    .state('appointment', {
+        templateUrl: './modules/appointments/views/dashboard.html',
+        controller:'appointmentDBController',
+        url: '/appointment'
+    })
+    .state('appointment.add', {
+        templateUrl: './modules/appointments/views/addAppointment.html',
+        controller:'appointmentAddController',
+        url: '/add'
     })
     
     

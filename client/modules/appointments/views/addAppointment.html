@@ -1,0 +1,117 @@
+<breadcrum-directive breadcrum-ds="breadcrumDs"></breadcrum-directive>
+ <!-- Main content -->
+    <section class="content">
+
+      <!-- SELECT2 EXAMPLE -->
+      <div class="box box-default">
+        <!-- /.box-header -->
+        <div class="box-body">
+          <div class="row">
+            <div class="col-md-6">
+                <div class="col-md-6" style="padding-left: 0px;">
+                    <div class="form-group">
+                      <label for="firstnameInputText">First Name</label>
+                      <input type="text" class="form-control" id="firstnameInputText" placeholder="Enter first name" ng-model="appointment.fname">
+                    </div>
+                </div>
+                <div class="col-md-6" style="padding-left: 0px; padding-right: 0px;">
+                    <div class="form-group">
+                      <label for="lastnameInputText">Last Name</label>
+                      <input type="text" class="form-control" id="lastnameInputText" placeholder="Enter last name" ng-model="appointment.lname">
+                    </div>
+                </div>
+                <div class="form-group">
+                  <label for="phoneInputText">Phone</label>
+                  <input type="text" class="form-control" id="phoneInputText" placeholder="Enter phone" ng-model="appointment.phone">
+                </div>
+                <div class="form-group">
+                  <label for="emailInputText">Email</label>
+                  <input type="email" class="form-control" id="emailInputText" placeholder="Enter email" ng-model="appointment.email">
+                </div>
+                <div class="form-group">
+                  <label for="refInputText">Reference (Optional)</label>
+                  <input type="text" class="form-control" id="refInputText" placeholder="Enter reference" ng-model="appointment.reference">
+                </div>
+                <div class="form-group">
+                  <label for="addressInputText">Address</label>
+                  <input type="text" class="form-control" id="addressInputText" placeholder="Enter address" ng-model="appointment.address">
+                </div>
+                <div class="col-md-6" style="padding-left: 0px;">
+                    <div class="form-group">
+                      <label for="cityInputText">City</label>
+                      <input type="text" class="form-control" id="cityInputText" placeholder="Enter city" ng-model="appointment.city">
+                    </div>
+                </div>
+                <div class="col-md-6" style="padding-left: 0px; padding-right: 0px;">
+                    <div class="form-group">
+                      <label for="stateInputText">State</label>
+                      <input type="text" class="form-control" id="stateInputText" placeholder="Enter state" ng-model="appointment.state">
+                    </div>
+                </div>
+            </div>
+            <!-- /.col -->
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label>Doctors</label>
+                    <select class="form-control select2" style="width: 100%;" ng-options="item as ('Dr.'+item.firstName+' '+item.lastName) for item in org.doctors track by item.id" ng-model="appointment.doctor">
+                        <!--<option ng-repeat="doctor in org.doctors">Dr.{{doctor.lastName}} {{doctor.firstName}}</option>-->
+                    </select>
+                  </div>
+                <div class="form-group" style="margin-top: 40px;">
+                    <div class="input-group date" set-date-picker-dir set-id="appointmentDate">
+                        <div class="input-group-addon">
+                            <i class="fa fa-calendar"></i>
+                        </div>
+                        <input type="text" class="form-control pull-right" id="appointmentDate" ng-model="appointment.scheduleDate">
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="bootstrap-timepicker">
+                            <div class="form-group">
+                                <label>Slot - Start:</label>
+                                <div class="input-group bootstrap-timepicker timepicker" set-date-time-picker-dir set-id="slotStartTimePicker">
+                                  <input id="slotStartTimePicker" type="text" class="form-control input-small" ng-model="appointment.slotStartTime">
+                                  <span class="input-group-addon">
+                                    <i class="glyphicon glyphicon-time"></i>
+                                  </span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="bootstrap-timepicker">
+                            <div class="form-group">
+                                <label>End :</label>
+                                <div class="input-group bootstrap-timepicker timepicker" set-date-time-picker-dir set-id="slotEndTimePicker">
+                                  <input id="slotEndTimePicker" type="text" class="form-control input-small" ng-model="appointment.slotEndTime">
+                                  <span class="input-group-addon">
+                                    <i class="glyphicon glyphicon-time"></i>
+                                  </span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-12">
+                        <textarea class="textarea" placeholder="Place some details" style="width: 100%; height: 200px; font-size: 14px; line-height: 18px; border: 1px solid #dddddd; padding: 10px;" ng-model="appointment.moreDetails"></textarea>
+                    </div>
+                </div>
+            </div>
+            <!-- /.col -->
+          </div>
+          <!-- /.row -->
+        </div>
+        <!-- /.box-body -->
+        <div class="box-footer">
+            <div class="pull-right">
+                <div class="btn-group">
+                    <a ui-sref="appointment" class="btn btn-default">Cancel</a>
+                    <button type="button" class="btn btn-success" ng-click="onAppointmentUpdate()">Save</button>
+                </div>
+            </div>
+        </div>
+      </div>
+      <!-- /.box -->
+  </section>

@@ -1,0 +1,12 @@
+<section class="content-header">
+    <h1>
+        {{breadcrumDs.title}}
+        <small>{{breadcrumDs.version}}</small>
+    </h1>
+    <ol class="breadcrumb">
+        <li ng-repeat="newPath in breadcrumDs.path">
+            <a ui-sref="{{newPath.link}}" ng-if="newPath.link"><i class="fa" ng-class="newPath.iconSrc"></i> {{newPath.name}}</a>
+            <span ng-if="!newPath.link"><i class="fa" ng-class="newPath.iconSrc"></i> {{newPath.name}}</span>
+        </li>
+    </ol>
+</section>

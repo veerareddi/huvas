@@ -13,7 +13,7 @@ class controller {
     this.scope.onLoginClick = () => {
       let self = this;
       this.loginService.validateLoginDetails(this.scope.user).then(function(response){
-        self.state.go('dashboard');
+        self.state.go('appointment');
       })
     };
   }

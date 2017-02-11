@@ -22,6 +22,7 @@
     "AdminLTE": "admin-lte#^2.3.11",
     "moment": "^2.17.1",
     "font-awesome": "^4.7.0",
-    "Ionicons": "ionicons#^2.0.1"
+    "Ionicons": "ionicons#^2.0.1",
+    "AngularJS-Toaster": "angularjs-toaster#^2.1.0"
   }
 }
