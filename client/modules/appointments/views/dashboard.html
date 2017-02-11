@@ -1,0 +1,50 @@
+<div class="wrapper">
+    <div ng-include="'./modules/_common/templates/header.html'"></div>
+    <div ng-include="'./modules/_common/templates/aside.html'"></div>
+    <div class="content-wrapper"  ui-view>
+        
+        <breadcrum-directive breadcrum-ds="breadcrumDs"></breadcrum-directive>
+        <section class="content">
+            <!-- /.box -->
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="row">
+                        <div class="col-md-4 pull-right" style="padding:5px; margin:10px;">
+                            <a ui-sref="appointment.add" class="btn btn-block btn-info"><i class="fa fa-plus" aria-hidden="true"></i> Add Appointment</a>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-12">
+                            
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="box box-danger">
+                        <div class="box-header with-border">
+                            <h3 class="box-title">Doctors</h3>
+                            <div class="box-tools pull-right">
+                                <span class="label label-danger">{{org.doctors.length}} Doctors</span>
+                                <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i>
+                                </button>
+                            </div>
+                        </div>
+                        <div class="box-body no-padding">
+                            <ul class="users-list clearfix">
+                                <li ng-repeat="doctor in org.doctors">
+                                    <a href="#" ui-sref="appointment.add">
+                                        <img src="{{doctor.avatar}}" alt="User Image">
+                                        <!--<img src="./lib/AdminLTE/dist/img/user1-128x128.jpg" alt="User Image">-->
+                                        <a class="users-list-name" href="#">Dr.{{doctor.lastName}}, {{doctor.firstName}}</a>
+                                        <span class="users-list-date">{{doctor.doj | date:"shortDate"}}</span>
+                                    </a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+    <div ng-include="'./modules/_common/templates/footer.html'"></div>
+</div>
