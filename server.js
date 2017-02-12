@@ -85,7 +85,7 @@ connection.query('SELECT * from person', function(err, rows, fields) {
  if (!err)
    console.log('The solution is: ', rows);
  else
-   console.log('Error while performing Query.');
+   console.log(err);
 });
 
 connection.end();
