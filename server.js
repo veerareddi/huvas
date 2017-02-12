@@ -72,6 +72,24 @@ function broadcast(event, data) {
   });
 }
 
+var mysql      = require('mysql');
+var connection = mysql.createConnection({
+  host     : 'ec2-35-154-136-242.ap-south-1.compute.amazonaws.com',
+  port     :  3306,
+  user     : 'uvas',
+  password : 'OVRuvas@168',
+  database : 'huvas'
+});
+
+connection.query('SELECT * from person', function(err, rows, fields) {
+ if (!err)
+   console.log('The solution is: ', rows);
+ else
+   console.log('Error while performing Query.');
+});
+
+connection.end();
+
 router.use(require('./service/AuthService.js'));
 router.use(require('./service/OrgService.js'));
 
