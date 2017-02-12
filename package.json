@@ -26,7 +26,9 @@
     "bower": "^1.8.0",
     "express": "~3.2.4",
     "faker": "^3.1.0",
+    "jsonwebtoken": "^7.2.1",
     "lodash": "^4.17.4",
+    "mysql": "^2.13.0",
     "socket.io": "~0.9.14"
   },
   "devDependencies": {
