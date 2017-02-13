@@ -65,7 +65,7 @@
 /******/ 	}
 /******/ 	
 /******/ 	var hotApplyOnUpdate = true;
-/******/ 	var hotCurrentHash = "25a05335317d8f1d9f36"; // eslint-disable-line no-unused-vars
+/******/ 	var hotCurrentHash = "e502f6f8c19987e45c41"; // eslint-disable-line no-unused-vars
 /******/ 	var hotCurrentModuleData = {};
 /******/ 	var hotCurrentParents = []; // eslint-disable-line no-unused-vars
 /******/ 	
@@ -615,29 +615,17 @@
 
 	var _module2 = _interopRequireDefault(_module);
 
-	var _module3 = __webpack_require__(14);
+	var _module3 = __webpack_require__(15);
 
 	var _module4 = _interopRequireDefault(_module3);
 
-	var _module5 = __webpack_require__(18);
+	var _module5 = __webpack_require__(19);
 
 	var _module6 = _interopRequireDefault(_module5);
 
-	var _module7 = __webpack_require__(20);
-
-	var _module8 = _interopRequireDefault(_module7);
-
-	var _module9 = __webpack_require__(23);
-
-	var _module10 = _interopRequireDefault(_module9);
-
-	var _module11 = __webpack_require__(25);
-
-	var _module12 = _interopRequireDefault(_module11);
-
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-	var huvas = _angular2.default.module('angularWebpack', ['ui.router', 'ngAnimate', 'toaster', _interceptors2.default.name, _constants2.default, _module2.default, _module4.default, _module6.default, _module8.default, _module10.default, _module12.default]);
+	var huvas = _angular2.default.module('angularWebpack', ['ui.router', 'ngAnimate', 'toaster', _interceptors2.default.name, _constants2.default, _module2.default, _module4.default, _module6.default]);
 
 	huvas.config(_routes2.default);
 	huvas.$inject = ['$urlRouterProvider', '$stateProvider'];
@@ -43244,22 +43232,14 @@
 	    var $window = $windowProvider.$get();
 	    $logProvider.debugEnabled(false);
 
-	    $stateProvider.state('context', {
+	    $stateProvider.state('auth', {
 	        templateUrl: './modules/auth/views/login.html',
 	        controller: 'loginCtrl',
-	        url: '/'
-	    }).state('dashboard', {
-	        templateUrl: './modules/dashboard/views/dashboard.html',
-	        controller: 'dashboardController',
-	        url: '/dashboard'
-	    }).state('dashboard.calendar', {
-	        templateUrl: './modules/calendar/views/calendar.html',
-	        controller: 'calendarController',
-	        url: '/calendar'
-	    }).state('dashboard.event', {
-	        templateUrl: './modules/event/views/event.html',
-	        controller: 'eventController',
-	        url: '/calendar/event'
+	        url: '/auth'
+	    }).state('register', {
+	        templateUrl: './modules/auth/views/org-register.html',
+	        controller: 'orgRegisterCtrl',
+	        url: '/register'
 	    }).state('appointment', {
 	        templateUrl: './modules/appointments/views/dashboard.html',
 	        controller: 'appointmentDBController',
@@ -43270,7 +43250,7 @@
 	        url: '/add'
 	    });
 
-	    $urlRouterProvider.otherwise("/");
+	    $urlRouterProvider.otherwise("/auth");
 	}
 
 	config.$inject = ['$stateProvider', '$windowProvider', '$logProvider', '$urlRouterProvider'];
@@ -43295,9 +43275,13 @@
 
 	var _login_service2 = _interopRequireDefault(_login_service);
 
+	var _org_register_ctrl = __webpack_require__(14);
+
+	var _org_register_ctrl2 = _interopRequireDefault(_org_register_ctrl);
+
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-	exports.default = angular.module('app.auth', []).controller('loginCtrl', _login_ctrl2.default).service('loginService', _login_service2.default).name;
+	exports.default = angular.module('app.auth', []).controller('loginCtrl', _login_ctrl2.default).controller('orgRegisterCtrl', _org_register_ctrl2.default).service('loginService', _login_service2.default).name;
 
 /***/ },
 /* 12 */
@@ -43397,6 +43381,42 @@
 
 /***/ },
 /* 14 */
+/***/ function(module, exports) {
+
+	'use strict';
+
+	Object.defineProperty(exports, "__esModule", {
+	  value: true
+	});
+
+	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+	var controller = function () {
+	  function controller($scope, $state, loginService) {
+	    _classCallCheck(this, controller);
+
+	    this.scope = $scope;
+	    this.state = $state;
+	    this.loginService = loginService;
+	    this.init();
+	  }
+
+	  _createClass(controller, [{
+	    key: 'init',
+	    value: function init() {}
+	  }]);
+
+	  return controller;
+	}();
+
+	controller.$inject = ['$scope', '$state', 'loginService'];
+
+	exports.default = controller;
+
+/***/ },
+/* 15 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -43405,15 +43425,15 @@
 	    value: true
 	});
 
-	var _appoitment_db_ctrl = __webpack_require__(15);
+	var _appoitment_db_ctrl = __webpack_require__(16);
 
 	var _appoitment_db_ctrl2 = _interopRequireDefault(_appoitment_db_ctrl);
 
-	var _appoitment_add_ctrl = __webpack_require__(16);
+	var _appoitment_add_ctrl = __webpack_require__(17);
 
 	var _appoitment_add_ctrl2 = _interopRequireDefault(_appoitment_add_ctrl);
 
-	var _appointments_serv = __webpack_require__(17);
+	var _appointments_serv = __webpack_require__(18);
 
 	var _appointments_serv2 = _interopRequireDefault(_appointments_serv);
 
@@ -43422,7 +43442,7 @@
 	exports.default = angular.module('app.appointments', []).controller('appointmentDBController', _appoitment_db_ctrl2.default).controller('appointmentAddController', _appoitment_add_ctrl2.default).service('appointmentServ', _appointments_serv2.default).name;
 
 /***/ },
-/* 15 */
+/* 16 */
 /***/ function(module, exports) {
 
 	'use strict';
@@ -43477,7 +43497,7 @@
 	exports.default = controller;
 
 /***/ },
-/* 16 */
+/* 17 */
 /***/ function(module, exports) {
 
 	"use strict";
@@ -43541,7 +43561,7 @@
 	exports.default = controller;
 
 /***/ },
-/* 17 */
+/* 18 */
 /***/ function(module, exports) {
 
 	'use strict';
@@ -43593,315 +43613,7 @@
 	exports.default = AppointmentServ.serviceFactory;
 
 /***/ },
-/* 18 */
-/***/ function(module, exports, __webpack_require__) {
-
-	'use strict';
-
-	Object.defineProperty(exports, "__esModule", {
-	    value: true
-	});
-
-	var _dashboardCtrl = __webpack_require__(19);
-
-	var _dashboardCtrl2 = _interopRequireDefault(_dashboardCtrl);
-
-	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-	exports.default = angular.module('app.dashboard', []).controller('dashboardController', _dashboardCtrl2.default).name;
-
-/***/ },
 /* 19 */
-/***/ function(module, exports) {
-
-	'use strict';
-
-	Object.defineProperty(exports, "__esModule", {
-	    value: true
-	});
-
-	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-
-	var controller = function controller($scope) {
-	    _classCallCheck(this, controller);
-
-	    console.log(':::::::::::: This is dashboard controller :::::::::::::::');
-	};
-
-	controller.$inject = ['$scope'];
-	exports.default = controller;
-
-/***/ },
-/* 20 */
-/***/ function(module, exports, __webpack_require__) {
-
-	'use strict';
-
-	Object.defineProperty(exports, "__esModule", {
-	    value: true
-	});
-
-	var _calendar_ctrl = __webpack_require__(21);
-
-	var _calendar_ctrl2 = _interopRequireDefault(_calendar_ctrl);
-
-	var _fullCalendar = __webpack_require__(22);
-
-	var _fullCalendar2 = _interopRequireDefault(_fullCalendar);
-
-	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-	exports.default = angular.module('app.calendar', []).controller('calendarController', _calendar_ctrl2.default).directive('fullCalendarDirective', _fullCalendar2.default).name;
-
-/***/ },
-/* 21 */
-/***/ function(module, exports) {
-
-	"use strict";
-
-	Object.defineProperty(exports, "__esModule", {
-	  value: true
-	});
-
-	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
-
-	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-
-	var controller = function () {
-	  function controller($scope, $state) {
-	    _classCallCheck(this, controller);
-
-	    this.scope = $scope;
-	    this.init($state);
-	    this.scope.modelDataSrc = {};
-	  }
-
-	  _createClass(controller, [{
-	    key: "getCalendarScheduleByDoctorId",
-	    value: function getCalendarScheduleByDoctorId() {
-	      var date = new Date();
-	      var d = date.getDate(),
-	          m = date.getMonth(),
-	          y = date.getFullYear();
-	      return [{
-	        title: 'All Day Event',
-	        start: new Date(y, m, 1),
-	        backgroundColor: "#f56954", //red
-	        borderColor: "#f56954" //red
-	      }, {
-	        title: 'Long Event',
-	        start: new Date(y, m, d - 5),
-	        end: new Date(y, m, d - 2),
-	        backgroundColor: "#f39c12", //yellow
-	        borderColor: "#f39c12" //yellow
-	      }, {
-	        title: 'Meeting',
-	        start: new Date(y, m, d, 10, 30),
-	        allDay: false,
-	        backgroundColor: "#0073b7", //Blue
-	        borderColor: "#0073b7" //Blue
-	      }, {
-	        title: 'Lunch',
-	        start: new Date(y, m, d, 12, 0),
-	        end: new Date(y, m, d, 14, 0),
-	        allDay: false,
-	        backgroundColor: "#00c0ef", //Info (aqua)
-	        borderColor: "#00c0ef" //Info (aqua)
-	      }, {
-	        title: 'Birthday Party',
-	        start: new Date(y, m, d + 1, 19, 0),
-	        end: new Date(y, m, d + 1, 22, 30),
-	        allDay: false,
-	        backgroundColor: "#00a65a", //Success (green)
-	        borderColor: "#00a65a" //Success (green)
-	      }, {
-	        title: 'Click for Google',
-	        start: new Date(y, m, 28),
-	        end: new Date(y, m, 29),
-	        url: 'http://google.com/',
-	        backgroundColor: "#3c8dbc", //Primary (light-blue)
-	        borderColor: "#3c8dbc" //Primary (light-blue)
-	      }];
-	    }
-	  }, {
-	    key: "init",
-	    value: function init($state) {
-	      var _this = this;
-
-	      console.log('calendar-controller initialized');
-
-	      this.scope.setCalendarEvent = function (event) {
-	        console.log('::::::::::::::> Super dude :( Veera hello!! :) Welcome setCalendarEvent <::::::::::::::');
-	        _this.scope.modelDataSrc = event;
-	        _this.scope.$apply();
-	      };
-
-	      this.state = $state;
-	      this.scope.doctorSrcEvents = this.getCalendarScheduleByDoctorId();
-	    }
-	  }]);
-
-	  return controller;
-	}();
-
-	controller.$inject = ['$scope', '$state'];
-
-	exports.default = controller;
-
-/***/ },
-/* 22 */
-/***/ function(module, exports) {
-
-	'use strict';
-
-	Object.defineProperty(exports, "__esModule", {
-	  value: true
-	});
-
-	function fullCalendarDirective($state) {
-	  return {
-	    restrict: 'E',
-	    template: '<div id="calendar"></div>',
-	    scope: {
-	      srcEvents: '=',
-	      setEvent: '&'
-	    },
-	    link: function link(scope, element, attrs, ctrl) {
-	      console.log('::::::::::::::> fullCalendarDirective <::::::::::::::');
-
-	      var date = new Date();
-	      var d = date.getDate(),
-	          m = date.getMonth(),
-	          y = date.getFullYear();
-	      $('#calendar').fullCalendar({
-	        header: {
-	          left: 'prev,next today',
-	          center: 'title',
-	          right: 'month,agendaWeek,agendaDay'
-	        },
-	        buttonText: {
-	          today: 'today',
-	          month: 'month',
-	          week: 'week',
-	          day: 'day'
-	        },
-	        defaultView: 'agendaDay',
-	        //Random default events
-	        events: scope.srcEvents,
-	        editable: true,
-	        droppable: true,
-	        eventClick: function eventClick(calEvent, jsEvent, view) {
-	          scope.setEvent()(calEvent);
-	          $state.go('dashboard.event');
-	        },
-	        drop: function drop(date, allDay) {
-	          var selectedDate = new Date(date._d);
-	          var originalEventObject = $(this).data('eventObject');
-	          var copiedEventObject = $.extend({}, originalEventObject);
-	          copiedEventObject.backgroundColor = $(this).css("background-color");
-	          copiedEventObject.borderColor = $(this).css("border-color");
-	          copiedEventObject.start = selectedDate;
-	          copiedEventObject.end = (selectedDate.getTime() + 1800000) / 1000;
-	          copiedEventObject.allDay = false;
-	          $('#calendar').fullCalendar('renderEvent', copiedEventObject, true);
-	          if ($('#drop-remove').is(':checked')) {
-	            $(this).remove();
-	          }
-
-	          scope.srcEvents.push(copiedEventObject);
-	          scope.setEvent()(copiedEventObject);
-	          $state.go('dashboard.event');
-	        }
-	      });
-
-	      function ini_events(ele) {
-	        ele.each(function () {
-	          var eventObject = {
-	            title: $.trim($(this).text())
-	          };
-	          $(this).data('eventObject', eventObject);
-	          $(this).draggable({
-	            zIndex: 1070,
-	            revert: true,
-	            revertDuration: 0
-	          });
-	        });
-	      }
-
-	      ini_events($('#external-events div.external-event'));
-
-	      /* ADDING EVENTS */
-	      var currColor = "#3c8dbc"; //Red by default
-	      //Color chooser button
-	      var colorChooser = $("#color-chooser-btn");
-	      $("#color-chooser > li > a").click(function (e) {
-	        e.preventDefault();
-	        currColor = $(this).css("color");
-	        $('#add-new-event').css({ "background-color": currColor, "border-color": currColor });
-	      });
-	      $("#add-new-event").click(function (e) {
-	        e.preventDefault();
-	        var val = $("#new-event").val();
-	        if (val.length == 0) {
-	          return;
-	        }
-	        //Create events
-	        var event = $("<div />");
-	        event.css({ "background-color": currColor, "border-color": currColor, "color": "#fff" }).addClass("external-event");
-	        event.html(val);
-	        $('#external-events').prepend(event);
-	        ini_events(event);
-
-	        $("#new-event").val("");
-	      });
-	    }
-	  };
-	}
-
-	fullCalendarDirective.$inject = ['$state'];
-	exports.default = fullCalendarDirective;
-
-/***/ },
-/* 23 */
-/***/ function(module, exports, __webpack_require__) {
-
-	'use strict';
-
-	Object.defineProperty(exports, "__esModule", {
-	    value: true
-	});
-
-	var _eventCtrl = __webpack_require__(24);
-
-	var _eventCtrl2 = _interopRequireDefault(_eventCtrl);
-
-	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-	exports.default = angular.module('app.events', []).controller('eventController', _eventCtrl2.default).name;
-
-/***/ },
-/* 24 */
-/***/ function(module, exports) {
-
-	'use strict';
-
-	Object.defineProperty(exports, "__esModule", {
-	    value: true
-	});
-
-	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-
-	var controller = function controller($scope) {
-	    _classCallCheck(this, controller);
-
-	    console.log(':::::::::::: This is Event controller :::::::::::::::');
-	};
-
-	controller.$inject = ['$scope'];
-	exports.default = controller;
-
-/***/ },
-/* 25 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -43910,23 +43622,23 @@
 	                    value: true
 	});
 
-	var _breadcrumDir = __webpack_require__(26);
+	var _breadcrumDir = __webpack_require__(20);
 
 	var _breadcrumDir2 = _interopRequireDefault(_breadcrumDir);
 
-	var _setDateTimePicker = __webpack_require__(27);
+	var _setDateTimePicker = __webpack_require__(21);
 
 	var _setDateTimePicker2 = _interopRequireDefault(_setDateTimePicker);
 
-	var _setDatePicker = __webpack_require__(28);
+	var _setDatePicker = __webpack_require__(22);
 
 	var _setDatePicker2 = _interopRequireDefault(_setDatePicker);
 
-	var _sidebarToggleDir = __webpack_require__(29);
+	var _sidebarToggleDir = __webpack_require__(23);
 
 	var _sidebarToggleDir2 = _interopRequireDefault(_sidebarToggleDir);
 
-	var _dropdownToggleDir = __webpack_require__(30);
+	var _dropdownToggleDir = __webpack_require__(24);
 
 	var _dropdownToggleDir2 = _interopRequireDefault(_dropdownToggleDir);
 
@@ -43935,7 +43647,7 @@
 	exports.default = angular.module('app.common', []).directive('breadcrumDirective', _breadcrumDir2.default).directive('setDateTimePickerDir', _setDateTimePicker2.default).directive('setDatePickerDir', _setDatePicker2.default).directive('sidebarToggleDir', _sidebarToggleDir2.default).directive('dropdownToggleDir', _dropdownToggleDir2.default).name;
 
 /***/ },
-/* 26 */
+/* 20 */
 /***/ function(module, exports) {
 
 	'use strict';
@@ -43963,7 +43675,7 @@
 	exports.default = breadcrumDirective;
 
 /***/ },
-/* 27 */
+/* 21 */
 /***/ function(module, exports) {
 
 	'use strict';
@@ -43991,7 +43703,7 @@
 	exports.default = setDateTimePickerDir;
 
 /***/ },
-/* 28 */
+/* 22 */
 /***/ function(module, exports) {
 
 	'use strict';
@@ -44019,7 +43731,7 @@
 	exports.default = setDatePickerDir;
 
 /***/ },
-/* 29 */
+/* 23 */
 /***/ function(module, exports) {
 
 	'use strict';
@@ -44044,7 +43756,7 @@
 	exports.default = sidebarToggleDir;
 
 /***/ },
-/* 30 */
+/* 24 */
 /***/ function(module, exports) {
 
 	"use strict";

@@ -4,25 +4,15 @@ function config($stateProvider, $windowProvider, $logProvider, $urlRouterProvide
     $logProvider.debugEnabled(false);
     
     $stateProvider
-    .state('context', {
+    .state('auth', {
         templateUrl: './modules/auth/views/login.html',
         controller: 'loginCtrl',
-        url: '/'
+        url: '/auth'
     })
-    .state('dashboard', {
-        templateUrl: './modules/dashboard/views/dashboard.html',
-        controller:'dashboardController',
-        url: '/dashboard'
-    })
-    .state('dashboard.calendar', {
-        templateUrl: './modules/calendar/views/calendar.html',
-        controller:'calendarController',
-        url: '/calendar'
-    })
-    .state('dashboard.event', {
-        templateUrl: './modules/event/views/event.html',
-        controller:'eventController',
-        url: '/calendar/event'
+    .state('register', {
+        templateUrl: './modules/auth/views/org-register.html',
+        controller: 'orgRegisterCtrl',
+        url: '/register'
     })
     .state('appointment', {
         templateUrl: './modules/appointments/views/dashboard.html',
@@ -35,11 +25,7 @@ function config($stateProvider, $windowProvider, $logProvider, $urlRouterProvide
         url: '/add'
     })
     
-    
-    
-    $urlRouterProvider.otherwise("/");
-
-    
+    $urlRouterProvider.otherwise("/auth");
 }
 
 config.$inject = ['$stateProvider', '$windowProvider', '$logProvider', '$urlRouterProvider'];

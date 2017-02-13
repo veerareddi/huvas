@@ -81,7 +81,7 @@ var connection = mysql.createConnection({
   database : 'huvas'
 });
 
-connection.query('SELECT * from person', function(err, rows, fields) {
+connection.query({sql:'SELECT * from person', timeout: 100000}, function(err, rows, fields) {
  if (!err)
    console.log('The solution is: ', rows);
  else

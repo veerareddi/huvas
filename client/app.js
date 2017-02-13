@@ -9,9 +9,6 @@ import routes               from './config/routes';
 
 import auth                 from './modules/auth/module';
 import appointments         from './modules/appointments/module';
-import dashboard            from './modules/dashboard/module';
-import calendar             from './modules/calendar/module';
-import event                from './modules/event/module';
 import common               from './modules/_common/module';
 
 let huvas = angular.module('angularWebpack', [
@@ -22,9 +19,6 @@ let huvas = angular.module('angularWebpack', [
     ,constantsModule
     ,auth
     ,appointments
-    ,dashboard
-    ,calendar
-    ,event
     ,common
 ]);
 
